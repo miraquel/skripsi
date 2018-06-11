@@ -26,3 +26,11 @@ Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
 
 Route::resource('posts', 'PostController');
+
+Route::resource('customers', 'CustomerController');
+
+// Region Controller
+Route::resource('provinces', 'ProvinceController');
+Route::resource('provinces.regencies', 'RegencyController');
+Route::resource('provinces.regencies.districts', 'DistrictController');
+Route::resource('provinces.regencies.districts.villages', 'VillageController');

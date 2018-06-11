@@ -6,6 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Relations\Relation;
+
+Relation::morphMap([
+    'customer' => 'App\Customer',
+    'staff' => 'App\Staff',
+]);
 
 class User extends Authenticatable
 {
@@ -18,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'userable_id', 'userable_type'
     ];
 
     /**
@@ -33,5 +39,10 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function userable()
+    {
+        return $this->morphTo();
     }
 }

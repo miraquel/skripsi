@@ -2,7 +2,7 @@
 @section('title', '| Permissions')
 @section('content')
 
-<div class="col-lg-10 col-lg-offset-1">
+<div class="col-lg-12">
     <h1>
         <i class="fas fa-key"></i>Available Permissions
         <div class="btn-group float-right" role="group" aria-label="Users & Roles">

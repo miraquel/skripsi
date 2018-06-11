@@ -51,7 +51,7 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @role('Admin') {{-- Laravel-permission blade helper --}}
-                                    <a href="#"><i class="fa fa-btn fa-unlock"></i>Admin</a>
+                                    <a href="{{ route('users.index') }}" class="dropdown-item"><i class="fa fa-btn fa-unlock"></i> Admin Panel</a>
                                     @endrole
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -72,6 +72,12 @@
 
         <main class="py-4">
             <div class="container">
+                @if(Session::has('flash_message'))
+                <div class="container">
+                    <div class="alert alert-success"><em> {!! session('flash_message') !!}</em>
+                    </div>
+                </div>
+                @endif
                 @yield('content')
             </div>
         </main>

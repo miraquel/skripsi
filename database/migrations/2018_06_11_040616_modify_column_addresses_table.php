@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomersTable extends Migration
+class ModifyColumnAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateCustomersTable extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('phone', 13);
-            $table->timestamps();
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->string('village_id', 10)->change();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->integer('village_id')->change();
+        });
     }
 }
